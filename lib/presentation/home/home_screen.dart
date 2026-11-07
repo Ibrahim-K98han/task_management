@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/core/app_colors.dart';
+import 'package:task_management/presentation/home/widget/app_logo.dart';
+
+import 'widget/profile_avatar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,12 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Home Screen',
-          style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
+      body: Column(
+        children: [
+          
+        ],
+      )
     );
   }
 }

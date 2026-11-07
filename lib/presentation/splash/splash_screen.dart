@@ -35,27 +35,38 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 85.0,
-            height: 85.0,
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(20.0),
-              boxShadow: [
-                BoxShadow(color: AppColors.primary.withValues(alpha: 0.32)),
-              ],
+          Center(
+            child: Container(
+              width: 85.0,
+              height: 85.0,
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(color: AppColors.primary.withValues(alpha: 0.32)),
+                ],
+              ),
+              child: Icon(Icons.check, color: AppColors.white, size: 50.0),
             ),
-            child: Icon(Icons.check),
           ),
+          SizedBox(height: 16.0),
           Text(
             AppString.appName,
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 30.0,
               fontWeight: FontWeight.bold,
               color: AppColors.textPrimary,
             ),
+          ),
+          SizedBox(height: 4.0),
+          Text(
+            AppString.appTagline,
+            style: TextStyle(fontSize: 16.0, color: AppColors.textSecondary),
           ),
         ],
       ),
