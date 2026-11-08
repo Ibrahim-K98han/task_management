@@ -18,7 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
       body: Column(
         children: [
-          
+          Text("Good Morning".toUppercase()),
+          Text("Ibrahim Khan")
         ],
       )
     );
