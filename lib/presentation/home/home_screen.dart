@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/core/app_colors.dart';
 import 'package:task_management/presentation/home/widget/app_logo.dart';
+import 'package:task_management/presentation/home/widget/stat_card.dart';
 
 import 'widget/profile_avatar.dart';
 
@@ -18,10 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
       body: Column(
         children: [
-          Text("Good Morning".toUppercase()),
-          Text("Ibrahim Khan")
+          Text("Good Morning".toLowerCase()),
+          Text("Ibrahim Khan"),
+          StatCard(),
         ],
-      )
+      ),
     );
   }
 }
