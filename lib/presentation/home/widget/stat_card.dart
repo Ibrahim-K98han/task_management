@@ -25,7 +25,6 @@ class StatCard extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-
           Text("Tasks", style: TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),

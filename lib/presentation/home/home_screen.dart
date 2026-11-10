@@ -19,9 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
       body: Column(
         children: [
-          Text("Good Morning".toLowerCase()),
+          Text("Good Morning".toUpperCase()),
           Text("Ibrahim Khan"),
-          StatCard(),
+          Row(
+            children: [
+              Expanded(child: StatCard()),
+              Expanded(child: StatCard()),
+              Expanded(child: StatCard()),
+            ],
+          ),
         ],
       ),
     );
