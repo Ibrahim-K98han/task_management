@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class StatCard extends StatelessWidget {
-  const StatCard({super.key});
+  const StatCard({
+    super.key,
+    required this.icon,
+    required this.iconColor,
+    required this.count,
+    required this.label,
+  });
+
+  final IconData icon;
+  final Color iconColor;
+  final int count;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +26,9 @@ class StatCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.task, color: Colors.white, size: 32),
+          Icon(icon, color: iconColor, size: 32),
           Text(
-            "10",
+            count.toString(),
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -25,7 +36,7 @@ class StatCard extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-          Text("Tasks", style: TextStyle(color: Colors.white, fontSize: 16)),
+          Text(label, style: TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),
     );
