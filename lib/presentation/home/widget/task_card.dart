@@ -44,14 +44,14 @@ class TaskCard extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  "Task Title",
+                  task.title,
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 4.0),
                 Text(
-                  "Task description goes here.",
+                  task.description,
                   style: TextStyle(fontSize: 14.0, color: Colors.grey),
                 ),
               ],
