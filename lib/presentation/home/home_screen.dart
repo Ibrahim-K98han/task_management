@@ -21,18 +21,28 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.primary,
+        child: Icon(Icons.add, color: AppColors.white),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Good Morning".toUpperCase()),
-            Text("Ibrahim Khan"),
+            Text(
+              "Ibrahim Khan",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
             Row(
               spacing: 10,
               children: [
                 Expanded(
                   child: StatCard(
-                    icon: Icons.format_align_center,
+                    icon: Icons.list_alt,
                     iconColor: AppColors.primary,
                     count: 0,
                     label: "Total",
@@ -40,22 +50,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: StatCard(
-                    icon: Icons.format_align_center,
-                    iconColor: AppColors.primary,
+                    icon: Icons.watch_later,
+                    iconColor: AppColors.mediumPriority,
                     count: 0,
-                    label: "Total",
+                    label: "Pending",
                   ),
                 ),
                 Expanded(
                   child: StatCard(
-                    icon: Icons.format_align_center,
-                    iconColor: AppColors.primary,
+                    icon: Icons.check_circle,
+                    iconColor: AppColors.lowPriority,
                     count: 0,
-                    label: "Total",
+                    label: "Completed",
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
@@ -80,6 +91,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(height: 20),
+            TaskCard(
+              task: Task(
+                title: 'Finish onboarding mockups',
+                description: 'Complete the design for the onboarding screens.',
+                dueDate: '2023-07-15',
+                priority: 'High',
+                createdDate: '2023-07-10',
+              ),
+              onTap: () {},
+              onStatusTap: () {},
             ),
             TaskCard(
               task: Task(
