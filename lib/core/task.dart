@@ -23,6 +23,7 @@ List<Task> taskList = [
     dueDate: '2023-07-15',
     priority: 'High',
     createdDate: '2023-07-10',
+    isCompleted: true,
   ),
   Task(
     title: 'Write unit tests',
@@ -30,6 +31,7 @@ List<Task> taskList = [
     dueDate: '2023-07-20',
     priority: 'Medium',
     createdDate: '2023-07-12',
+    isCompleted: false,
   ),
   Task(
     title: 'Update documentation',
@@ -37,5 +39,22 @@ List<Task> taskList = [
     dueDate: '2023-07-18',
     priority: 'Low',
     createdDate: '2023-07-11',
+    isCompleted: false,
+  ),
+  Task(
+    title: 'Refactor codebase',
+    description: 'Refactor the codebase to improve maintainability.',
+    dueDate: '2023-07-22',
+    priority: 'High',
+    createdDate: '2023-07-13',
+    isCompleted: true,
+  ),
+  Task(
+    title: 'Refactor codebase',
+    description: 'Refactor the codebase to improve maintainability.',
+    dueDate: '2023-07-22',
+    priority: 'High',
+    createdDate: '2023-07-13',
+    isCompleted: true,
   ),
 ];

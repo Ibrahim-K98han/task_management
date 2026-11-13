@@ -113,12 +113,15 @@ class TaskCard extends StatelessWidget {
                   vertical: 4.0,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.lowPriority,
+                  color: task.isCompleted
+                      ? AppColors.lowPriority
+                      : AppColors.mediumPriority,
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 child: Text(
-                  "Completed",
-                  style: const TextStyle(color: AppColors.white, fontSize: 10),
+                  task.isCompleted ? "Completed" : "Pending",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: AppColors.white, fontSize: 10),
                 ),
               ),
             ),

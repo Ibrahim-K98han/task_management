@@ -17,8 +17,42 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Task> _tasks = taskList;
+  String _selectedFilter = AppString.all;
+  List<Task> get _visibleTask {
+    if (_selectedFilter == AppString.pending) {
+      return _tasks.where((task) => task.isCompleted == false).toList();
+    } else if (_selectedFilter == AppString.completed) {
+      return _tasks.where((task) => task.isCompleted == true).toList();
+    } else {
+      return _tasks;
+    }
+  }
+
+  int get _completedCount =>
+      _tasks.where((task) => task.isCompleted == true).length;
+
+  int get _pendingCount =>
+      _tasks.where((task) => task.isCompleted == false).length;
+
+  void _onFilterTap(String filter) {
+    setState(() {
+      _selectedFilter = filter;
+    });
+  }
+
+  void _onStatusTap(Task task) {
+    setState(() {
+      task.isCompleted = !task.isCompleted;
+    });
+  }
+
+  void _goToAddTask() {}
+
+  void _goToDetails() {}
   @override
   Widget build(BuildContext context) {
+    final List<Task> visibleTasks = _visibleTask;
     return Scaffold(
       appBar: AppBar(title: AppLogo(), actions: [ProfileAvatar()]),
       floatingActionButton: FloatingActionButton(
@@ -44,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: StatCard(
                     icon: Icons.list_alt,
                     iconColor: AppColors.primary,
-                    count: 0,
+                    count: _tasks.length,
                     label: "Total",
                   ),
                 ),
@@ -52,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: StatCard(
                     icon: Icons.watch_later,
                     iconColor: AppColors.mediumPriority,
-                    count: 0,
+                    count: _pendingCount,
                     label: "Pending",
                   ),
                 ),
@@ -60,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: StatCard(
                     icon: Icons.check_circle,
                     iconColor: AppColors.lowPriority,
-                    count: 0,
+                    count: _completedCount,
                     label: "Completed",
                   ),
                 ),
@@ -72,48 +106,41 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: FilterBtn(
                     label: AppString.all,
-                    isSelected: true,
-                    onPressed: () {},
+                    isSelected: _selectedFilter == AppString.all,
+                    onPressed: () => _onFilterTap(AppString.all),
+                  ),
+                ),
+
+                Expanded(
+                  child: FilterBtn(
+                    label: AppString.pending,
+                    isSelected: _selectedFilter == AppString.pending,
+                    onPressed: () => _onFilterTap(AppString.pending),
                   ),
                 ),
                 Expanded(
                   child: FilterBtn(
                     label: AppString.completed,
-                    isSelected: false,
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: FilterBtn(
-                    label: AppString.pending,
-                    isSelected: false,
-                    onPressed: () {},
+                    isSelected: _selectedFilter == AppString.completed,
+                    onPressed: () => _onFilterTap(AppString.completed),
                   ),
                 ),
               ],
             ),
             SizedBox(height: 20),
-            TaskCard(
-              task: Task(
-                title: 'Finish onboarding mockups',
-                description: 'Complete the design for the onboarding screens.',
-                dueDate: '2023-07-15',
-                priority: 'High',
-                createdDate: '2023-07-10',
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: visibleTasks.length,
+                itemBuilder: (context, index) {
+                  final task = visibleTasks[index];
+                  return TaskCard(
+                    task: task,
+                    onTap: () => _goToDetails(),
+                    onStatusTap: () => _onStatusTap(task),
+                  );
+                },
               ),
-              onTap: () {},
-              onStatusTap: () {},
-            ),
-            TaskCard(
-              task: Task(
-                title: 'Finish onboarding mockups',
-                description: 'Complete the design for the onboarding screens.',
-                dueDate: '2023-07-15',
-                priority: 'High',
-                createdDate: '2023-07-10',
-              ),
-              onTap: () {},
-              onStatusTap: () {},
             ),
           ],
         ),
